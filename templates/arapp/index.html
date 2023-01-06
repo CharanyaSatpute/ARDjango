@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AR Technology</title>
+    <style>
+        #myselection {
+				bottom: 15%;
+				margin-left:50px;
+				margin-bottom :100px;
+				font-size: 8;
+				left:0%;
+				width:20%;
+				align: centre;
+				background: pink;
+				}
+
+		.control-label {
+		    position: relative;
+            width: 100%;
+            margin-bottom: 40px;
+            box-sizing: border-box;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            }
+
+
+    </style>
+</head>
+<body>
+
+<form  method="post" action="/">
+    {% csrf_token %}
+    <div  class="control-label">
+<h1>Login Page</h1>
+<br> <br>
+ <select onchange= "fun(this.value)">
+  <option disabled selected>-login-</option>
+  <option value="student.html">student</option>
+  <option value="admin.html">admin</option>
+</select>
+</div>
+</form>
+<script>
+    function fun(src)
+    {
+     window.location=src;
+     }
+</script>
+
+</body>
+</html>

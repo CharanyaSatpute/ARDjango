@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>student login</title>
+    <style>
+        .control-label {
+		    position: relative;
+            width: 100%;
+            margin-bottom: 40px;
+            box-sizing: border-box;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            }
+    </style>
+</head>
+<body>
+<div  class="control-label">
+<h1>student login</h1>
+<form action="#" method="post">
+{% csrf_token %}
+
+
+
+<div class="col-md-3"><div class="form-group">
+<label class="control-label">Student Id : </label>
+<input type="text" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
+</div></div>
+  <br>
+  <div class="col-md-3"><div class="form-group">
+<label class="control-label">Password : </label>
+<input type="password" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
+</div></div>
+  <br>
+  <div class="col-md-3"><div class="form-group">
+<label class="control-label">Subject : </label>
+<input type="text" id="" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
+</div></div>
+    <br><br>
+
+  <input type="button"  value="submit" name="argame.html" onclick="fun(this.name)"  >
+
+</div>
+</form>
+<script>
+    function fun(src)
+    {
+        window.location=src;
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AR Technology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+		<title>three.js AR Game</title>
+	<link rel="stylesheet" href="{% static 'css/ar.css' %}">
+
+</head>
+<body>
+
+		<button class = 'button' id = 'undo'>Undo</button>
+		<button class = 'button' id = 'controlButton'>Start Game</button>
+		<button class = 'button' id = 'showInfo'>Instructions</button>
+		<button class = 'button' id = 'dropButton'>Drop Tile</button>
+		<div id = 'splash' class = 'button'>
+			<p>Welcome to</p>
+			<h1>Word Jumble</h1>
+			<h3>AR Edition</h3>
+			<div id = 'instructions' class = 'button'>
+				<p><a href = "www.example.com">Get the marker</a></p>
+				<p>Tap on "Start Game"</p>
+				<p>The test word is presented in jumble form in green tiles</p>
+				<p>Tap on a letter to pick it</p>
+				<p>Place the letter in the correct white slot</p>
+
+				<p>If you picked the wrong letter, pick another or use "Drop Tile" button</p>
+				<p>You can undo your placements with the 'Undo' button</p>
+			</div>
+		</div>
+		<div id = 'scoreCard' class = 'button'>
+		</div>
+		</div>
+		<p class = 'button', id = 'timeP'>Time : 5</p>
+
+		<p class = 'button' id = 'status'></p>
+
+{% block content %} {% endblock %}
+<script src="{% static 'mindar/mindar-image-three.prod.js' %}"></script>
+<script src="{% static 'js/threeGameAR.js' %}"></script>
+
+
+</body>
+</html>
