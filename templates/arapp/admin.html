@@ -19,35 +19,38 @@
 <body>
 
 
-<form action="#" method="post">
-    {% csrf_token %}
-
-<div  class="control-label">
+<form action="choose.html" method="post">
+    <div  class="control-label" >
 <h1>admin login</h1>
-<div class="col-md-3"><div class="form-group">
-<label class="control-label">Admin Id : </label>
-<input type="text" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
-</div></div>
-  <br>
-  <div class="col-md-3"><div class="form-group">
-<label class="control-label">Password : </label>
-<input type="password" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
-</div></div>
-  <br><br>
-    <div class="col-md-3"><div class="form-group">
-    <label class="control-label">Subject : </label>
-<select >
-  <option disabled selected>-subject-</option>
+    {% csrf_token %}
+{{ form.as_p }}
+<!--<div  class="control-label" >
+<h1>admin login</h1>
+<div class= "control-label"}>
+<label >Admin Id : </label>
+    {{ form.admin_id }}
+   <input type = "text" class = "txtPost" placeholder = "id" name="admin_id" required>
+</div>
+    <br><br>
+    <div class= "control-label"}>
+    <label >password : </label>
+    {{ form.admin_password }}
+<input type = "password" class = "txtPost" placeholder = "password" name="password" required>
+    </div>
+        <br><br>
+    <div class= "control-label"}>
+        <label >Subject : </label>
+    {{ form.subject }}
+<select class = "txtPost" required>
+    <option value="">select</option>
   <option value="English">English</option>
   <option value="Mathematics">Mathematics</option>
      <option value="physics">physics</option>
      <option value="biology">biology</option>
      <option value="social studies">social studies</option>
 </select>
-        </div></div>
-<br><br>
- <input type="button"  value="submit" name="choose.html" onclick="fun(this.name)"  >
-
+    </div> -->
+       <button type="submit" class ="btnPost btnBlue" >login</button>
 </div>
 </form>
 <script>

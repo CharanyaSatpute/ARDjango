@@ -32,17 +32,25 @@
 </head>
 <body>
 
-<br>
-<form>
-   <div  class="control-label">
+<form method="post" action="index.html">
+    <div  class="control-label">
+<h1 >adding new words</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+ <!--  <div  class="control-label">
 <h1 >adding new words</h1>
     <br><br>
-    <div class="col-md-3"><div class="form-group">
-<label class="control-label">Word : </label>
-<input type="text" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
-</div></div>
-    <br><br>
-<input type="button" value="save" name="submit">
+<div class= "control-label"}>
+<label >Subject : </label>
+       {{ form.subject }}
+    </div>
+<input type="text"  value="" name="subject"  required>
+       <label >Word : </label>
+       {{ form.word }}
+<input type="text"  value="" name="word"  required>
+
+    <br><br> -->
+<input type="submit" value="save" name="submit">
 
 </div>
 

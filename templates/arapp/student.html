@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>student login</title>
     <style>
-        .control-label {
+          .control-label {
 		    position: relative;
             width: 100%;
             margin-bottom: 40px;
@@ -17,31 +17,20 @@
     </style>
 </head>
 <body>
-<div  class="control-label">
-<h1>student login</h1>
-<form action="#" method="post">
+
+<form onsubmit="validate(event)" action="argame.html" method="post">
+    <div  class="control-label">
+        <h1>student login</h1>
 {% csrf_token %}
-
-
-
-<div class="col-md-3"><div class="form-group">
-<label class="control-label">Student Id : </label>
-<input type="text" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
-</div></div>
-  <br>
-  <div class="col-md-3"><div class="form-group">
-<label class="control-label">Password : </label>
-<input type="password" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
-</div></div>
-  <br>
-  <div class="col-md-3"><div class="form-group">
-<label class="control-label">Subject : </label>
-<input type="text" id="" class="form-control req" value="" name="" aria-required="true" aria-invalid="true" required="">
-</div></div>
-    <br><br>
-
-  <input type="button"  value="submit" name="argame.html" onclick="fun(this.name)"  >
-
+<div  class="control-label">
+        <label for="{{ form.student_id.id_for_label }}">Student Id:</label>
+        {{ form.student_id }}
+    </div>
+    <div class="control-label">
+        <label for="{{ form.student_password.id_for_label }}">Password:</label>
+        {{ form.student_password }}
+    </div>
+    <button type="submit">login in</button>
 </div>
 </form>
 <script>

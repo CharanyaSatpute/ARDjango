@@ -25,19 +25,36 @@ def choose(request):
     return render(request, 'arapp/choose.html')
 
 
-
-def student_page(request):
+def admin_view(request):
     if request.method == 'POST':
-        student_id = request.POST.get('student_id')
-        student_password = request.POST.get('password')
-        st = Student(student_id=student_id, student_password=student_password)
-        st.save()
-    return render(request, "student.html")
+        form = AdminForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = AdminForm()
+    return render(request, 'arapp/admin.html', {'form': form})
 
-def my_view(request):
-    data=Words.word.all()
-    data_list= json.dumps(list(data))
-    return render(request, 'threeGameAR.js', {'data_list': data_list})
+def student_view(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = StudentForm()
+    return render(request, 'arapp/student.html', {'form': form})
+
+def words_view(request):
+    if request.method == 'POST':
+        form = WordsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = WordsForm()
+    return render(request, 'arapp/addWords.html', {'form': form})
+
 
 
 
