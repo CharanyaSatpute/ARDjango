@@ -1,44 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>student login</title>
-    <style>
+<html>
+    <head>
+        <title>Student Login</title>
+        <style>
           .control-label {
-		    position: relative;
-            width: 100%;
-            margin-bottom: 40px;
-            box-sizing: border-box;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            color: black;
+		        position: relative;
+                width: 100%;
+                margin-bottom: 40px;
+                box-sizing: border-box;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                color: black;
             }
-    </style>
-</head>
-<body>
+        </style>
+    </head>
+    <body>
+        <form method="post" action="{% url 'argame' %}">
+            {% csrf_token %}
 
-<form onsubmit="validate(event)" action="argame.html" method="post">
-    <div  class="control-label">
-        <h1>student login</h1>
-{% csrf_token %}
-<div  class="control-label">
-        <label for="{{ form.student_id.id_for_label }}">Student Id:</label>
-        {{ form.student_id }}
-    </div>
-    <div class="control-label">
-        <label for="{{ form.student_password.id_for_label }}">Password:</label>
-        {{ form.student_password }}
-    </div>
-    <button type="submit">login in</button>
-</div>
-</form>
-<script>
-    function fun(src)
-    {
-        window.location=src;
-    }
-</script>
-</body>
+            <div class= "control-label"}>
+                <h1>Student Login</h1>
+            <label >Student Id : </label>
+               <input type = "text" class = "txtPost" placeholder = "id" name="student_id" required>
+            </div>
+                <br>
+                <div class= "control-label"}>
+                <label >password : </label>
+            <input type = "password" class = "txtPost" placeholder = "password" name="password" required>
+                </div>
+                    <br>
+                <div class= "control-label"}>
+                    <label >Subject : </label>
+            <select class = "txtPost" name = "subject" required>
+                <option value="">select</option>
+              <option value="English">English</option>
+              <option value="Mathematics">Mathematics</option>
+                 <option value="physics">physics</option>
+                 <option value="biology">biology</option>
+                 <option value="social studies">social studies</option>
+            </select>
+                </div>
+                <div class= "control-label"}>
+                  <button type="submit" class ="btnPost btnBlue" >login</button>
+                </div>
+            </div>
+            </form>
 
+    </body>
 </html>

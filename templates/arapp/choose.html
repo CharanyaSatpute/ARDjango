@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AR Technology</title>
     <style>
-        .control-label {
+        #myselection {
+				bottom: 15%;
+				margin-left:50px;
+				margin-bottom :100px;
+				font-size: 8;
+				left:0%;
+				width:20%;
+				align: centre;
+				background: rgb(229, 223, 224);
+				}
+
+		.control-label {
 		    position: relative;
             width: 100%;
             margin-bottom: 40px;
@@ -14,24 +25,39 @@
             justify-content: center;
             color: black;
             }
+
+
     </style>
 </head>
 <body>
-<form action="#" method="post">
-    {% csrf_token %}
-<div  class="control-label">
-<h1>choose option</h1>
 
-<input type="button"  value="play game" name="argame.html" onclick="fun(this.name)"  >
-    <br><br>
-    <input type="button"  value="add words" name="addWords.html" onclick="fun(this.name)"  >
-</div>
-</form>
-<script>
-    function fun(src)
-    {
-        window.location=src;
-    }
-</script>
+    <form method="post" onsubmit="handleFormSubmit(event)">
+        {% csrf_token %}
+        <div class="control-label">
+            <h1>Choose Page</h1>
+            <br> <br>
+            <select id="myselection" name="myselection">
+                <option disabled selected>-select-</option>
+                <option value="add words">add words</option>
+                <option value="play game">play game</option>
+            </select>
+            <br> <br>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            var selectedOption = document.getElementById("myselection").value;
+            if (selectedOption === "add words") {
+                window.location.href = "{% url 'addWords' %}";
+            } else {
+                window.location.href = "{% url 'argame' %}";
+            }
+        }
+    </script>
+
+
 </body>
 </html>

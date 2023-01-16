@@ -1,5 +1,5 @@
 from django import forms
-from .models import Admin, Student, Words
+from arapp.models import Admin, Student, Words
 
 class AdminForm(forms.ModelForm):
     class Meta:
@@ -12,27 +12,27 @@ class AdminForm(forms.ModelForm):
             ('PHYSICS', 'PHYSICS'),
             ('SOCIAL STUDIES', 'SOCIAL STUDIES')
         ]
-        fields = ['admin_id', 'admin_password', 'subject']
+        fields = '__all__'
         widgets = {
-            'admin_id': forms.TextInput(attrs={'required': True}),
-            'admin_password': forms.TextInput(attrs={'required': True}),
-            'subject': forms.Select(attrs={'required': True}, choices=my_choices)
+            'admin_id': forms.TextInput(attrs={'required': True, "class": "control-label"}),
+            'admin_password': forms.TextInput(attrs={'required': True, "class": "control-label"}),
+            'subject': forms.Select(attrs={'required': True, "class": "control-label"}, choices=my_choices, )
         }
 
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ['student_id', 'student_password']
+        fields = '__all__'
         widgets = {
-            'student_id': forms.TextInput(attrs={'required': True}),
-            'student_password': forms.TextInput(attrs={'required': True}),
+            'student_id': forms.TextInput(attrs={'required': True, "class": "control-label"}),
+            'student_password': forms.TextInput(attrs={'required': True, "class": "control-label"}),
         }
 
 class WordsForm(forms.ModelForm):
     class Meta:
         model = Words
-        fields = ['subject', 'word']
+        fields = '__all__'
         widgets = {
-            'subject': forms.TextInput(attrs={'required': True}),
-            'word': forms.TextInput(attrs={'required': True}),
+            'subject': forms.TextInput(attrs={'required': True, "class": "control-label"}),
+            'word': forms.TextInput(attrs={'required': True, "class": "control-label"}),
         }

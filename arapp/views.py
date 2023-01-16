@@ -1,66 +1,35 @@
-import json
+from django.shortcuts import render, HttpResponseRedirect
 
-from django.shortcuts import render, redirect
-from .models import Admin, Student, Words
-from .forms import WordsForm, AdminForm, StudentForm
-from django.http import HttpResponse
-
-# Create your views here.
 def index(request):
+    if request.method == 'POST':
+        if request.POST.get('myselection') == "student":
+            return HttpResponseRedirect('/students')
+        elif request.POST.get('myselection') == "admin":
+            return HttpResponseRedirect('/admins')
     return render(request, 'arapp/index.html')
 
-def student(request):
+def admins_view(request):
+    if request.method == 'POST':
+        return HttpResponseRedirect('/choose')
+    return render(request, 'arapp/admins.html')
+
+def students_view(request):
+    if request.method == 'POST':
+        return HttpResponseRedirect('/argame')
     return render(request, 'arapp/student.html')
 
-def admin(request):
-    return render(request, 'arapp/admin.html')
-
-def argame(request):
+def argame_view(request):
     return render(request, 'arapp/argame.html')
 
-def addWords(request):
-    return render(request, 'arapp/addWords.html')
-
-def choose(request):
+def choose_view(request):
+    if request.method == 'POST':
+        if request.POST.get('myselection') == "add words":
+            return HttpResponseRedirect('/addWords')
+        elif request.POST.get('myselection') == "play game":
+            return HttpResponseRedirect('/argame')
     return render(request, 'arapp/choose.html')
 
-
-def admin_view(request):
+def addWords_view(request):
     if request.method == 'POST':
-        form = AdminForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = AdminForm()
-    return render(request, 'arapp/admin.html', {'form': form})
-
-def student_view(request):
-    if request.method == 'POST':
-        form = StudentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = StudentForm()
-    return render(request, 'arapp/student.html', {'form': form})
-
-def words_view(request):
-    if request.method == 'POST':
-        form = WordsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = WordsForm()
-    return render(request, 'arapp/addWords.html', {'form': form})
-
-
-
-
-
-
-
-
-
-
+        return HttpResponseRedirect('/addWords')
+    return render(request, 'arapp/addWords.html')
