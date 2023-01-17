@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Admin Login</title>
+        <title>Student Login</title>
         <style>
           .control-label {
 		        position: relative;
@@ -17,31 +17,27 @@
     <body>
         <form method="post" action="{% url 'choose' %}">
             {% csrf_token %}
+            <div class= "control-label"}>
+                <h1>Add new words</h1>
+                <label >Subject : </label>
+        <select class = "txtPost" name = "subject" required>
+            <option value="">select</option>
+          <option value="English">English</option>
+          <option value="Mathematics">Mathematics</option>
+             <option value="physics">physics</option>
+             <option value="biology">biology</option>
+             <option value="social studies">social studies</option>
+        </select>
+            </div>
 
             <div class= "control-label"}>
-                <h1>Admin Login</h1>
-            <label >Admin Id : </label>
-               <input type = "text" class = "txtPost" placeholder = "id" name="admin_id" required>
+
+            <label >word : </label>
+               <input type = "text" class = "txtPost" placeholder = "id" name="word" required>
             </div>
-                <br>
+
                 <div class= "control-label"}>
-                <label >password : </label>
-            <input type = "password" class = "txtPost" placeholder = "password" name="password" required>
-                </div>
-                    <br>
-                <div class= "control-label"}>
-                    <label >Subject : </label>
-            <select class = "txtPost" name = "subject" required>
-                <option value="">select</option>
-              <option value="English">English</option>
-              <option value="Mathematics">Mathematics</option>
-                 <option value="physics">physics</option>
-                 <option value="biology">biology</option>
-                 <option value="social studies">social studies</option>
-            </select>
-                </div>
-                <div class= "control-label"}>
-                  <button type="submit" class ="btnPost btnBlue" >login</button>
+                  <button type="submit" class ="btnPost btnBlue" >save</button>
                 </div>
             </div>
             </form>

@@ -15,8 +15,17 @@ class Admin(models.Model):
     subject = models.CharField(max_length=50, choices=my_choices, blank=False)
 
 class Student(models.Model):
+    my_choices = [
+        ('select', 'select'),
+        ('ENGLISH', 'ENGLISH'),
+        ('MATHEMATICS', 'MATHEMATICS'),
+        ('BIOLOGY', 'BIOLOGY'),
+        ('PHYSICS', 'PHYSICS'),
+        ('SOCIAL STUDIES', 'SOCIAL STUDIES')
+    ]
     student_id = models.CharField(max_length=50, primary_key=True, blank=False)
     student_password = models.CharField(max_length=50, blank=False)
+    subject = models.CharField(max_length=50, choices=my_choices, blank=False)
 
 class Words(models.Model):
     subject = models.CharField(max_length=50, blank=False)

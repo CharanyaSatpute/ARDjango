@@ -22,10 +22,19 @@ class AdminForm(forms.ModelForm):
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
+        my_choices = [
+            ('select', 'select'),
+            ('ENGLISH', 'ENGLISH'),
+            ('MATHEMATICS', 'MATHEMATICS'),
+            ('BIOLOGY', 'BIOLOGY'),
+            ('PHYSICS', 'PHYSICS'),
+            ('SOCIAL STUDIES', 'SOCIAL STUDIES')
+        ]
         fields = '__all__'
         widgets = {
             'student_id': forms.TextInput(attrs={'required': True, "class": "control-label"}),
             'student_password': forms.TextInput(attrs={'required': True, "class": "control-label"}),
+            'subject': forms.Select(attrs={'required': True, "class": "control-label"}, choices=my_choices, )
         }
 
 class WordsForm(forms.ModelForm):

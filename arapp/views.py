@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-
+from arapp.models import Admin, Words, Student
 def index(request):
     if request.method == 'POST':
         if request.POST.get('myselection') == "student":
@@ -10,11 +10,21 @@ def index(request):
 
 def admins_view(request):
     if request.method == 'POST':
+        admin_id = request.POST.get("admin_id")
+        password = request.POST.get("password")
+        subject = request.POST.get("subject")
+        ad = Admin(admin_id=admin_id, admin_password=password, subject=subject)
+        ad.save()
         return HttpResponseRedirect('/choose')
     return render(request, 'arapp/admins.html')
 
 def students_view(request):
     if request.method == 'POST':
+        student_id = request.POST.get("student_id")
+        password = request.POST.get("password")
+        subject = request.POST.get("subject")
+        st = Student(student_id=student_id, student_password=password, subject=subject)
+        st.save()
         return HttpResponseRedirect('/argame')
     return render(request, 'arapp/student.html')
 
@@ -31,5 +41,9 @@ def choose_view(request):
 
 def addWords_view(request):
     if request.method == 'POST':
+        subject = request.POST.get("subject")
+        word = request.POST.get("word")
+        wd = Words(subject=subject, word=word)
+        wd.save()
         return HttpResponseRedirect('/addWords')
     return render(request, 'arapp/addWords.html')
