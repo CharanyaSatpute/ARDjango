@@ -28,7 +28,7 @@ load_dotenv(env_path)
 # access the environment variable for secret key
 SECRET_KEY  = os.getenv('SECRET_KEY')
 
-print(BASE_DIR)
+#print(BASE_DIR)
 # UPDATE secret key
 
 
@@ -98,7 +98,8 @@ DATABASES = {
          'ENGINE': 'django.db.backends.postgresql',
          'NAME': 'ardb',
          'USER': 'postgres',
-         'PASSWORD': '   ',
+         #'PASSWORD': '   ',
+         'PASSWORD': 'admin',
          'HOST': 'localhost',
      }
  }
@@ -161,3 +162,28 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'filters': ['require_debug_true'],
+        },
+    },
+    'loggers': {
+        'mylogger': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': True,
+        },
+    },
+}

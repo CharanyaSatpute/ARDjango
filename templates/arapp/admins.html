@@ -15,7 +15,8 @@
         </style>
     </head>
     <body>
-        <form method="post" action="{% url 'choose' %}">
+        <!-- <form method="post" action="{% url 'choose' %}"> -->
+        <form method="post" action="{% url 'admins' %}">
             {% csrf_token %}
 
             <div class= "control-label"}>

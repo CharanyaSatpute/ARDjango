@@ -3,4 +3,7 @@ key.pem
 .venv/
 ar/__pycache__/
 arapp/__pycache__/
+arapp/migrations/__pycache__/
 .env
+arapp/migrations/__pycache__
+arapp/migrations/__pycache__/__init__.cpython-310.pyc
