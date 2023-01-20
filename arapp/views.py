@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from arapp.models import Admin, Words, Student
-
+from django.http import JsonResponse
 import logging
 
 logger = logging.getLogger("mylogger")
@@ -16,10 +16,10 @@ def index(request):
 def admins_view(request): #consider changing to teacher
     #logger.info("here")
     #logger.info(request,request.method)
-    print ("printed here")
-    print(request,request.method)
+    print("printed here")
+    print(request, request.method)
     if request.method == 'POST':
-        print ("POST request")
+        print("POST request")
         admin_id = request.POST.get("admin_id")
         password = request.POST.get("password")
         subject = request.POST.get("subject")
@@ -33,12 +33,14 @@ def admins_view(request): #consider changing to teacher
 
 def students_view(request):
     if request.method == 'POST':
+        print("POST request")
         student_id = request.POST.get("student_id")
         password = request.POST.get("password")
         subject = request.POST.get("subject")
-        st = Student(student_id=student_id, student_password=password, subject=subject)
+        st = Student.objects.create(student_id=student_id, student_password=password, subject=subject)
         st.save()
-        return HttpResponseRedirect('/argame')
+        logger.info(st)
+        return HttpResponseRedirect('argame')
     return render(request, 'arapp/student.html')
 
 def argame_view(request):
@@ -55,9 +57,18 @@ def choose_view(request):
 
 def addWords_view(request):
     if request.method == 'POST':
+        print("printed here")
+        print(request, request.method)
         subject = request.POST.get("subject")
         word = request.POST.get("word")
-        wd = Words(subject=subject, word=word)
+        wd = Words.objects.create(subject=subject, word=word)
         wd.save()
-        return HttpResponseRedirect('/addWords')
+        logger.info(wd)
+        return HttpResponseRedirect('addWords')
     return render(request, 'arapp/addWords.html')
+
+
+
+
+
+
