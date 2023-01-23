@@ -3,10 +3,14 @@ import {CSS3DRenderer,CSS3DObject} from "../../static/three.js-r132/examples/jsm
 
 const THREE = window.MINDAR.IMAGE.THREE;
 
+
 const tileColor = 'DarkSlateGray';
 const slotColor = 'Silver';
 //var testWord = "COHORT";
-const wordList = ["COHORT","GROWTH","RANKING"]
+
+//const wordList = ["COHORT","GROWTH","RANKING"]
+//var wordList = JSON.parse(wordList);
+console.log(wordList);
 var progress = wordList.length;
 //var progress = wordList.length
 var testWord //currentword
@@ -293,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 	});
 
+
 	const {renderer, cssRenderer, scene, cssScene, camera} = mindarThree;
 
 	
@@ -438,6 +443,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	start();
 	// pause();
 });
+
+
 // function makeVisible() {
 // 	for (let i = 0; i <numLetters; i++) {
 // 		tileArray[i].visible = true;
