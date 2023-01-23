@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from arapp.models import Admin, Words, Student
 from django.http import JsonResponse
 import json
@@ -26,11 +26,19 @@ def admins_view(request): #consider changing to teacher
         subject = request.POST.get("subject")
         #ad = Admin(admin_id=admin_id, admin_password=password, subject=subject)
         #ad.save()
-        ad = Admin.objects.create(admin_id=admin_id, admin_password=password, subject=subject)
-        ad.save()
-        logger.info(ad)
-        request.session['subject'] = subject
-        return HttpResponseRedirect('choose')
+        try:
+            ad = Admin.objects.get(admin_id=admin_id)
+            if ad.admin_password == password:
+                request.session['subject'] = subject
+                return HttpResponseRedirect('choose')
+            else:
+                return HttpResponse("Incorrect password.")
+        except Admin.DoesNotExist:
+            ad = Admin.objects.create(admin_id=admin_id, admin_password=password, subject=subject)
+            ad.save()
+            logger.info(ad)
+            request.session['subject'] = subject
+            return HttpResponseRedirect('choose')
     return render(request, 'arapp/admins.html')
 
 def students_view(request):
@@ -39,11 +47,19 @@ def students_view(request):
         student_id = request.POST.get("student_id")
         password = request.POST.get("password")
         subject = request.POST.get("subject")
-        st = Student.objects.create(student_id=student_id, student_password=password, subject=subject)
-        st.save()
-        logger.info(st)
-        request.session['subject'] = subject
-        return HttpResponseRedirect('argame?subject'+ subject)
+        try:
+            st = Student.objects.get(student_id=student_id)
+            if st.student_password == password:
+                request.session['subject'] = subject
+                return HttpResponseRedirect('argame?subject'+ subject)
+            else:
+                return HttpResponse("Incorrect password.")
+        except Student.DoesNotExist:
+            st = Student.objects.create(student_id=student_id, student_password=password, subject=subject)
+            st.save()
+            logger.info(st)
+            request.session['subject'] = subject
+            return HttpResponseRedirect('argame?subject'+ subject)
     return render(request, 'arapp/student.html')
 
 #def argame_view(request):
