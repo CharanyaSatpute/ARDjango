@@ -7,10 +7,10 @@ const THREE = window.MINDAR.IMAGE.THREE;
 const tileColor = 'DarkSlateGray';
 const slotColor = 'Silver';
 //var testWord = "COHORT";
-
 //const wordList = ["COHORT","GROWTH","RANKING"]
 //var wordList = JSON.parse(wordList);
 console.log(wordList);
+
 var progress = wordList.length;
 //var progress = wordList.length
 var testWord //currentword
@@ -241,6 +241,25 @@ document.getElementById("showInfo").addEventListener("click", () => {
 	document.getElementById('instructions').style.display = 'block';
 })
 
+function sendScore(FinalScore) {
+    $.ajax({
+        type: 'POST',
+        url: '/save_score/',
+        data: {
+            'FinalScore': FinalScore,
+            csrfmiddlewaretoken: csrftoken,
+        },
+        success: function () {
+            console.log('score saved')
+        },
+        error: function () {
+            console.log('Error')
+        }
+    });
+}
+
+
+
 function timeKeeper(){
 	
 	
@@ -367,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.getElementById('undo').disabled = true;
 			document.getElementById("undo").style.visibility = 'hidden';
 			console.log(movecount,numLetters);
+			//console.log((100-movecount*5))
 			gameStatus = 3;
 			//create scorecard
 			document.getElementById("scoreCard").style.display = 'block';
@@ -378,15 +398,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.getElementById("scoreCard").appendChild(p[p.length-1]);
 			
 			p.push(document.createElement('p'));
-			p[p.length-1].innerHTML = ("Score : " + (100-(movecount)*5));		
+			var s=(100-(movecount)*5)
+			p[p.length-1].innerHTML = ("Score : " + s);
 			document.getElementById("scoreCard").appendChild(p[p.length-1]);
-
 			p.push(document.createElement('p'));
 			p[p.length-1].innerHTML = ("Time Bonus : " + timeRemaining*10);		
 			document.getElementById("scoreCard").appendChild(p[p.length-1]);
 
 			p.push(document.createElement('p'));
-			p[p.length-1].innerHTML = ("Final Score : "+ (100-(movecount)*5+timeRemaining*10));		
+			var FinalScore = (100-(movecount)*5+timeRemaining*10)
+			p[p.length-1].innerHTML = ("Final Score : "+ (100-(movecount)*5+timeRemaining*10));
+			console.log(FinalScore)
+			sendScore(FinalScore)
 			document.getElementById("scoreCard").appendChild(p[p.length-1]);		
 			document.getElementById('scoreCard').append(document.createElement('p').innerHTML = 'Refresh Browser window to play again');
 			document.getElementById("controlButton").style.visibility = 'hidden';

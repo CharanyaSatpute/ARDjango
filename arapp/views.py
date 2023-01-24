@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
-from arapp.models import Admin, Words, Student
+from arapp.models import Admin, Words, Student, Score
 from django.http import JsonResponse
 import json
 import logging
@@ -24,12 +24,14 @@ def admins_view(request): #consider changing to teacher
         admin_id = request.POST.get("admin_id")
         password = request.POST.get("password")
         subject = request.POST.get("subject")
+        flag = 0
         #ad = Admin(admin_id=admin_id, admin_password=password, subject=subject)
         #ad.save()
         try:
             ad = Admin.objects.get(admin_id=admin_id)
             if ad.admin_password == password:
                 request.session['subject'] = subject
+                request.session['flag'] = flag
                 return HttpResponseRedirect('choose')
             else:
                 return HttpResponse("Incorrect password.")
@@ -38,6 +40,7 @@ def admins_view(request): #consider changing to teacher
             ad.save()
             logger.info(ad)
             request.session['subject'] = subject
+            request.session['flag'] = flag
             return HttpResponseRedirect('choose')
     return render(request, 'arapp/admins.html')
 
@@ -47,11 +50,14 @@ def students_view(request):
         student_id = request.POST.get("student_id")
         password = request.POST.get("password")
         subject = request.POST.get("subject")
+        flag=1
         try:
             st = Student.objects.get(student_id=student_id)
             if st.student_password == password:
                 request.session['subject'] = subject
-                return HttpResponseRedirect('argame?subject'+ subject)
+                request.session['student_id'] = student_id
+                request.session['flag'] = flag
+                return HttpResponseRedirect('argame?subject/'+ subject)
             else:
                 return HttpResponse("Incorrect password.")
         except Student.DoesNotExist:
@@ -59,6 +65,8 @@ def students_view(request):
             st.save()
             logger.info(st)
             request.session['subject'] = subject
+            request.session['student_id'] = student_id
+            request.session['flag'] = flag
             return HttpResponseRedirect('argame?subject'+ subject)
     return render(request, 'arapp/student.html')
 
@@ -67,6 +75,7 @@ def students_view(request):
   #  print(list(wordList))
    # return render(request, 'arapp/argame.html', {'wordList': wordList})
     #return render(request, 'arapp/argame.html')
+
 
 def argame_view(request):
     subject = request.session.get('subject', None)
@@ -97,6 +106,22 @@ def addWords_view(request):
         logger.info(wd)
         return HttpResponseRedirect('addWords')
     return render(request, 'arapp/addWords.html')
+
+
+def save_score(request):
+    if request.method == 'POST':
+        print("post here")
+        final_score = request.POST.get('FinalScore')
+        flag = request.session.get('flag')
+        print(final_score)
+        if flag == 1:
+            student_id = request.session.get('student_id')
+            id= Student.objects.get(student_id=student_id)
+            sc = Score.objects.create(student_id=id, score=final_score)
+            sc.save()
+            return HttpResponse("Score Saved.")
+    return HttpResponse("Error Occured.")
+
 
 
 

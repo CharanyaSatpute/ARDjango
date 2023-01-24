@@ -12,6 +12,7 @@ urlpatterns = [
     path('admins/choose/argame', views.argame_view, name='argame'),
     path('admins/choose/addWords', views.addWords_view, name='addWords'),
     #path('choose/<str:subject>', views.choose_view, name='choose'),
+    path('save_score/', views.save_score, name='save_score'),
 
 ]
 

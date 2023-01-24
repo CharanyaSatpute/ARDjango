@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Words, Admin, Student
+from .models import Words, Admin, Student, Score
 
 # Register your models here.
 class StudentAdmin(admin.ModelAdmin):
@@ -11,6 +11,10 @@ class AdminAdmin(admin.ModelAdmin):
 class WordsAdmin(admin.ModelAdmin):
     list_display = ('subject', 'word')
 
+class ScoreAdmin(admin.ModelAdmin):
+    list_display = ('id', 'student_id', 'score', 'timestamp')
+
 admin.site.register(Words, WordsAdmin)
 admin.site.register(Admin, AdminAdmin)
 admin.site.register(Student, StudentAdmin)
+admin.site.register(Score, ScoreAdmin)

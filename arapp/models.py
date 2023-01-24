@@ -36,7 +36,7 @@ class Score(models.Model):
     id = models.BigAutoField(primary_key=True)
     student_id = models.ForeignKey('Student', on_delete=models.CASCADE)
     score = models.IntegerField()
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(auto_now_add=True)
 
 class Words(models.Model):
     subject = models.CharField(max_length=50, blank=False)

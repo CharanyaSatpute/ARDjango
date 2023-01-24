@@ -7,6 +7,11 @@
 		<script>
 			var wordList = {{ wordList|safe }};
 		</script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+		<script>
+  			var csrftoken = Cookies.get('csrftoken');
+		</script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script type = "module" src="{% static 'js/threeGameAR.js' %}"></script>
 		<meta charset="utf-8">
 		<title>three.js AR Game</title>
