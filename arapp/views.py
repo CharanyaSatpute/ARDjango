@@ -57,7 +57,7 @@ def students_view(request):
                 request.session['subject'] = subject
                 request.session['student_id'] = student_id
                 request.session['flag'] = flag
-                return HttpResponseRedirect('argame?subject/'+ subject)
+                return HttpResponseRedirect('argame?student_id<'+ student_id +'>')
             else:
                 return HttpResponse("Incorrect password.")
         except Student.DoesNotExist:
@@ -67,7 +67,7 @@ def students_view(request):
             request.session['subject'] = subject
             request.session['student_id'] = student_id
             request.session['flag'] = flag
-            return HttpResponseRedirect('argame?subject'+ subject)
+            return HttpResponseRedirect('argame?student_id<'+ student_id +'>')
     return render(request, 'arapp/student.html')
 
 #def argame_view(request):
@@ -93,6 +93,9 @@ def choose_view(request):
         elif request.POST.get('myselection') == "play game":
             print("play game")
             return HttpResponseRedirect('/argame')
+        elif request.POST.get('myselection') == "students information":
+            print("students info")
+            return HttpResponseRedirect('students_info')
     return render(request, 'arapp/choose.html')
 
 def addWords_view(request):
@@ -116,12 +119,18 @@ def save_score(request):
         print(final_score)
         if flag == 1:
             student_id = request.session.get('student_id')
-            id= Student.objects.get(student_id=student_id)
+            print(student_id)
+            print(type(student_id))
+            id = Student.objects.get(student_id=student_id)
             sc = Score.objects.create(student_id=id, score=final_score)
             sc.save()
             return HttpResponse("Score Saved.")
     return HttpResponse("Error Occured.")
 
+
+def students_info_view(request):
+    si = Score.objects.all()
+    return render(request, 'arapp/students_info.html', {'si': si})
 
 
 

@@ -14,6 +14,7 @@ import os
 import sys
 from pathlib import Path
 from dotenv import load_dotenv
+from pytz import timezone
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -98,8 +99,8 @@ DATABASES = {
          'ENGINE': 'django.db.backends.postgresql',
          'NAME': 'ardb',
          'USER': 'postgres',
-         #'PASSWORD': '   ',
-         'PASSWORD': 'admin',
+         'PASSWORD': '   ',
+         #'PASSWORD': 'admin',
          'HOST': 'localhost',
      }
  }
@@ -136,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -163,7 +164,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import os
 
 LOGGING = {
     'version': 1,

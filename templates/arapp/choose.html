@@ -40,6 +40,7 @@
                 <option disabled selected>-select-</option>
                 <option value="add words">add words</option>
                 <option value="play game">play game</option>
+                <option value="students information">students information</option>
             </select>
             <br> <br>
             <input type="submit" value="Submit">
@@ -50,10 +51,17 @@
         function handleFormSubmit(event) {
             event.preventDefault();
             var selectedOption = document.getElementById("myselection").value;
-            if (selectedOption === "add words") {
+            if (selectedOption === "add words")
+            {
                 window.location.href = "{% url 'addWords' %}";
-            } else {
+            }
+            if (selectedOption === "play game")
+            {
                 window.location.href = "{% url 'argame' %}";
+            }
+            if (selectedOption === "students information")
+            {
+                window.location.href = "{% url 'students_info' %}";
             }
         }
     </script>

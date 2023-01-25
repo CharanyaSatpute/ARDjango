@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students Information</title>
+        <style>
+
+		.control-label {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            }
+
+            h1 {
+                display: block;
+            }
+
+            table {
+                margin: 0 auto;
+                font-size: large;
+                border: 1px solid black;
+            }
+            tr {
+                background-color: #aabaaa;
+            }
+
+            td {
+            background-color: #addbba;
+            border: 1px solid black;
+            }
+
+            th,
+            td {
+                font-weight: bold;
+                border: 1px solid black;
+                padding: 10px;
+                text-align: center;
+            }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="control-label">
+<h1>STUDENTS DETAILS</h1>
+    <br>
+    <section>
+    <table>
+
+  <tr>
+
+    <th>STUDENT ID </th>
+    <th>FINAL SCORE</th>
+    <th>ATTEMPTED AT</th>
+  </tr>
+  {% for i in si %}
+    <tr>
+      <td>{{ i.student_id }}</td>
+      <td>{{ i.score }}</td>
+      <td>{{ i.timestamp }}</td>
+    </tr>
+  {% endfor %}
+</table>
+    </section>
+</div>
+</body>
+</html>
