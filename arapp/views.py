@@ -9,9 +9,9 @@ logger = logging.getLogger("mylogger")
 def index(request):
     if request.method == 'POST':
         if request.POST.get('myselection') == "student":
-            return HttpResponseRedirect('/students')
+            return HttpResponseRedirect('students')
         elif request.POST.get('myselection') == "admin":
-            return HttpResponseRedirect('/admins')
+            return HttpResponseRedirect('admins')
     return render(request, 'arapp/index.html')
 
 def admins_view(request): #consider changing to teacher
@@ -131,6 +131,12 @@ def save_score(request):
 def students_info_view(request):
     si = Score.objects.all()
     return render(request, 'arapp/students_info.html', {'si': si})
+
+def registration_page_view(request):
+    if request.method == 'POST':
+        return HttpResponseRedirect('index')
+    return render(request, 'arapp/registration_page.html')
+
 
 
 

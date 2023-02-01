@@ -18,12 +18,12 @@
 		<style>
 				body {
 
-
+					font-family: Arial, Helvetica, sans-serif;
+        			background-color: #C6E6FB ;
 					text-align: center;
 				}
 
 				.button {
-				background: white;
 				border: 1px solid #000;
 				border-radius: 4px;
 				color: #000;
@@ -34,6 +34,8 @@
 				float:left;
 				text-transform: uppercase;
 				z-index: 1001;
+				  background-color: #005A92;
+  				color: white;
       		}
 			#undo {
 			bottom:15%;
@@ -76,6 +78,8 @@
 				left:12.5% ;
 				bottom:50%;
 				width: 75%;
+  				background-color: #005A92;
+  				color: white;
 				/* height:300px; */
 				/* text-align: center; */
 				/* margin-left:-250px; */
@@ -89,12 +93,14 @@
 				/* margin-left:-250px; */
 			}
 			#instructions {
-				font-size: 8;
+				font-size: 12;
 				left:10%;
 				width:80%;
 				/* height:300px; */
 				/* text-align: center; */
 				/* margin-left:-250px; */
+				background-color: #C6E6FB ;
+				color: black;
 			}
 			#timeP {
 				border:none;
@@ -106,14 +112,15 @@
 	</head>
 	<body>
 		<button class = 'button' id = 'undo'>Undo</button>
-		<button class = 'button' id = 'controlButton'>Start Game</button>
-		<button class = 'button' id = 'showInfo'>Instructions</button>
+		<button class = 'button' id = 'controlButton'><b>Start Game</b></button>
+		<button class = 'button' id = 'showInfo'><b>Instructions</b></button>
 		<button class = 'button' id = 'dropButton'>Drop Tile</button>
 		<div id = 'splash' class = 'button'>
-			<p>Welcome to</p>
+			<h3>Welcome to</h3>
 			<h1>Word Jumble</h1>
 			<h3>AR Edition</h3>
 			<div id = 'instructions' class = 'button'>
+				<b>
 				<p><a href = "www.example.com">Get the marker</a></p>
 				<p>Tap on "Start Game"</p>
 				<p>The test word is presented in jumble form in green tiles</p>
@@ -122,6 +129,7 @@
 
 				<p>If you picked the wrong letter, pick another or use "Drop Tile" button</p>
 				<p>You can undo your placements with the 'Undo' button</p>
+					</b>
 			</div>
 		</div>
 		<div id = 'scoreCard' class = 'button'>

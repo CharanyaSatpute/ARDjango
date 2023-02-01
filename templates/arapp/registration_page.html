@@ -1,0 +1,116 @@
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #C6E6FB ;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+
+ .container {
+  max-width: 450px;
+  margin: auto;
+  background: white;
+  padding: 15px;
+  width: 50%;
+  margin-top: 30px;
+  height: 670px;
+  }
+
+/* Add padding to containers */
+
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  align-text: center;
+    bottom:10%;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #005A92;
+  color: white;
+  padding: 15px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 20px;
+}
+
+
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+  width: 30%;
+}
+input[type="radio"] {
+  padding-right: 20px;
+  display: inline-block;
+}
+</style>
+</head>
+<body>
+
+<form action="{% url 'registration_page' %}" method="post">
+  {% csrf_token %}
+  <div class="container">
+    <h1>Register</h1>
+    <hr>
+    <p>Please fill in this form to register</p>
+    <label for="Full Name"><b>Full Name </b></label>
+    <br>
+    <input type="text" placeholder="Enter Full Name" name="Full Name" id="Full Name" required>
+    <br>
+    <label for="Roll Number"><b>Roll Number  </b></label>
+    <br>
+    <input type="text" placeholder="Enter Roll Number" name="Roll Number" id="Roll Number" required>
+    <br>
+    <label for="psw"><b>Password</b></label>
+    <br>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <br>
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <br>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <br>
+   <input type="radio" id="student"  value="student" name="category">
+  <label for="student">Student </label>
+  <input type="radio" id="admin"  value="admin" name="category">
+  <label for="admin">Admin</label>
+    <br><br>
+    <button type="submit" class="registerbtn">Register</button>
+
+
+    <p>Already have an account? <a href="{% url 'index' %}">Login</a>.</p>
+  </div>
+</form>
+
+</body>
+</html>

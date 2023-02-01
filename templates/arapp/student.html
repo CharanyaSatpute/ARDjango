@@ -2,16 +2,46 @@
     <head>
         <title>Student Login</title>
         <style>
-          .control-label {
-		        position: relative;
-                width: 100%;
-                margin-bottom: 40px;
-                box-sizing: border-box;
-                text-align: center;
-                align-items: center;
-                justify-content: center;
-                color: black;
-            }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #C6E6FB ;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+
+}
+.control-label {
+  max-width: 450px;
+  margin: auto;
+  background: white;
+  padding: 15px;
+  width: 50%;
+  margin-top: 50px;
+  height: 590px;
+  }
+
+.loginbutton {
+  background-color: #005A92;
+  color: white;
+  padding: 15px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 20px;
+}
+input[type=text], input[type=password], select {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  align-text: center;
+    bottom:10%;
+    font-size: 16px;
+}
         </style>
     </head>
     <body>
@@ -20,29 +50,27 @@
 
             <div class= "control-label"}>
                 <h1>Student Login</h1>
-            <label >Student Id : </label>
+            <label >Student Id : </label><br>
                <input type = "text" class = "txtPost" placeholder = "id" name="student_id" required>
-            </div>
+
                 <br>
-                <div class= "control-label"}>
-                <label >password : </label>
+                <label >password : </label><br>
             <input type = "password" class = "txtPost" placeholder = "password" name="password" required>
-                </div>
+
                     <br>
-                <div class= "control-label"}>
-                    <label >Subject : </label>
-            <select class = "txtPost" name = "subject" required>
+
+                    <label >Subject : </label> <br>
+            <select  name = "subject" required>
                 <option value="">select</option>
               <option value="English">English</option>
               <option value="Mathematics">Mathematics</option>
-                 <option value="physics">physics</option>
-                 <option value="biology">biology</option>
-                 <option value="social studies">social studies</option>
+                 <option value="Physics">physics</option>
+                 <option value="Biology">biology</option>
+                 <option value="Social Studies">social studies</option>
             </select>
-                </div>
-                <div class= "control-label"}>
-                  <button type="submit" class ="btnPost btnBlue" >login</button>
-                </div>
+                <br> <br> <br> <br> <br> <br> <br> <br>
+                  <button type="submit" class ="loginbutton" >login</button>
+
             </div>
             </form>
 

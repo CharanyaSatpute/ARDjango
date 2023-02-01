@@ -5,12 +5,15 @@
     <title>Students Information</title>
         <style>
 
-		.control-label {
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            color: black;
-            }
+	.control-label {
+  max-width: 450px;
+  margin: auto;
+  background: white;
+  padding: 15px;
+  width: 90%;
+  margin-top: 50px;
+  height: 500px;
+  }
 
             h1 {
                 display: block;
@@ -22,12 +25,14 @@
                 border: 1px solid black;
             }
             tr {
-                background-color: #aabaaa;
+                background-color: #005A92;
+                color: white;
             }
 
             td {
-            background-color: #addbba;
+            background-color: #f1f1f1;
             border: 1px solid black;
+            color: black;
             }
 
             th,
@@ -38,14 +43,22 @@
                 text-align: center;
             }
 
+            body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #C6E6FB ;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
 
+}
 
 
     </style>
 </head>
 <body>
 <div class="control-label">
-<h1>STUDENTS DETAILS</h1>
+<h1>Students Details</h1>
+    <hr>
     <br>
     <section>
     <table>
@@ -58,7 +71,7 @@
   </tr>
   {% for i in si %}
     <tr>
-      <td>{{ i.student_id }}</td>
+      <td>{{ i.student_id.student_id }}</td>
       <td>{{ i.score }}</td>
       <td>{{ i.timestamp }}</td>
     </tr>
