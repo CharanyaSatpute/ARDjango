@@ -6,7 +6,7 @@ import logging
 
 logger = logging.getLogger("mylogger")
 
-def index(request):
+def index(request):    
     if request.method == 'POST':
         if request.POST.get('myselection') == "student":
             return HttpResponseRedirect('students')
@@ -31,8 +31,8 @@ def admins_view(request): #consider changing to teacher
             ad = Admin.objects.get(admin_id=admin_id)
             if ad.admin_password == password:
                 request.session['subject'] = subject
-                request.session['flag'] = flag
-                return HttpResponseRedirect('choose')
+                request.session['flag'] = flag                
+                return HttpResponseRedirect('choose',{'admin_id':admin_id,'subject':subject,'flag':flag})
             else:
                 return HttpResponse("Incorrect password.")
         except Admin.DoesNotExist:
@@ -57,7 +57,7 @@ def students_view(request):
                 request.session['subject'] = subject
                 request.session['student_id'] = student_id
                 request.session['flag'] = flag
-                return HttpResponseRedirect('argame?student_id<'+ student_id +'>')
+                return HttpResponseRedirect('argame',{'student_id':student_id,'flag':flag})
             else:
                 return HttpResponse("Incorrect password.")
         except Student.DoesNotExist:
@@ -84,12 +84,10 @@ def argame_view(request):
     return render(request, 'arapp/argame.html', {'wordList': wordList})
 
 
-def choose_view(request):
-    logger.info("choose here")
-    if request.method == 'POST':
-        print("choose")
+def choose_view(request):    
+    if request.method == 'POST':        
         if request.POST.get('myselection') == "add words":
-            return HttpResponseRedirect('/addWords')
+            return HttpResponseRedirect('/addWords',{'subject':request.session.get('subject')})
         elif request.POST.get('myselection') == "play game":
             print("play game")
             return HttpResponseRedirect('/argame')
@@ -100,9 +98,8 @@ def choose_view(request):
 
 def addWords_view(request):
     if request.method == 'POST':
-        print("printed here")
-        print(request, request.method)
-        subject = request.POST.get("subject")
+        
+        subject = request.session.get("subject")
         word = request.POST.get("word")
         wd = Words.objects.create(subject=subject, word=word)
         wd.save()
@@ -133,10 +130,6 @@ def students_info_view(request):
     return render(request, 'arapp/students_info.html', {'si': si})
 
 def registration_page_view(request):
-    if request.method == 'POST':
-        return HttpResponseRedirect('index')
+    if request.method == 'POST':        
+        return HttpResponseRedirect('login')
     return render(request, 'arapp/registration_page.html')
-
-
-
-

@@ -11,6 +11,7 @@ const slotColor = 'Silver';
 //var wordList = JSON.parse(wordList);
 console.log(wordList);
 
+
 var progress = wordList.length;
 //var progress = wordList.length
 var testWord //currentword
@@ -280,11 +281,15 @@ function timeKeeper(){
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+	
+	
+
 	const start = async() => {	
+		
 		const mindarThree = new window.MINDAR.IMAGE.MindARThree({
-			container: document.body,//document.body
-			//imageTargetSrc: "static/img/marker.jpeg",
-			imageTargetSrc: '../../static/img/targets.mind'
+			container: document.body,//document.body			
+			imageTargetSrc: '/static/img/targets.mind'			
 			});		
 
 	document.getElementById("controlButton").addEventListener("click", () => {

@@ -99,8 +99,8 @@ DATABASES = {
          'ENGINE': 'django.db.backends.postgresql',
          'NAME': 'ardb',
          'USER': 'postgres',
-         'PASSWORD': '   ',
-         #'PASSWORD': 'admin',
+         #'PASSWORD': '   ',
+         'PASSWORD': 'admin',
          'HOST': 'localhost',
      }
  }
