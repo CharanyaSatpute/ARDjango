@@ -102,7 +102,7 @@ def addWords_view(request):
     if request.method == 'POST':
         print("printed here")
         print(request, request.method)
-        subject = request.POST.get("subject")
+        subject = request.session.get('subject')
         word = request.POST.get("word")
         wd = Words.objects.create(subject=subject, word=word)
         wd.save()
@@ -134,7 +134,7 @@ def students_info_view(request):
 
 def registration_page_view(request):
     if request.method == 'POST':
-        return HttpResponseRedirect('index')
+        return HttpResponseRedirect('login')
     return render(request, 'arapp/registration_page.html')
 
 
