@@ -7,3 +7,6 @@ arapp/migrations/__pycache__/
 .env
 arapp/migrations/__pycache__
 arapp/migrations/__pycache__/__init__.cpython-310.pyc
+arapp/migrations/0001_initial.py
+arapp/migrations/__pycache__/__init__.cpython-310.pyc
+arapp/migrations/__pycache__/__init__.cpython-310.pyc
