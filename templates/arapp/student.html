@@ -17,7 +17,8 @@
   padding: 15px;
   width: 50%;
   margin-top: 50px;
-  height: 590px;
+  height: 620px;
+  font-size:20px;
   }
 
 .loginbutton {
@@ -50,6 +51,7 @@ input[type=text], input[type=password], select {
 
             <div class= "control-label"}>
                 <h1>Student Login</h1>
+                <b>
             <label >Student Id : </label><br>
                <input type = "text" class = "txtPost" placeholder = "Enter student ID" name="student_id" required>
 
@@ -68,9 +70,16 @@ input[type=text], input[type=password], select {
                  <option value="Biology">biology</option>
                  <option value="Social Studies">social studies</option>
             </select>
-                <br> <br> <br> <br> <br> <br> <br> <br>
+                <br> <br> <br> <br> <br>
+                            {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
                   <button type="submit" class ="loginbutton" >login</button>
-
+            </b>
             </div>
             </form>
 

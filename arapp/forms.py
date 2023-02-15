@@ -16,7 +16,7 @@ class AdminForm(forms.ModelForm):
         widgets = {
             'admin_id': forms.TextInput(attrs={'required': True, "class": "control-label"}),
             'admin_password': forms.TextInput(attrs={'required': True, "class": "control-label"}),
-            'subject': forms.Select(attrs={'required': True, "class": "control-label"}, choices=my_choices, )
+            'subject': forms.Select(attrs={'required': True, "class": "control-label"}, choices=my_choices),
         }
 
 class StudentForm(forms.ModelForm):
@@ -34,7 +34,7 @@ class StudentForm(forms.ModelForm):
         widgets = {
             'student_id': forms.TextInput(attrs={'required': True, "class": "control-label"}),
             'student_password': forms.TextInput(attrs={'required': True, "class": "control-label"}),
-            'subject': forms.Select(attrs={'required': True, "class": "control-label"}, choices=my_choices, )
+            'subject': forms.Select(attrs={'required': True, "class": "control-label"}, choices=my_choices),
         }
 
 class WordsForm(forms.ModelForm):

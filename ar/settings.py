@@ -97,10 +97,10 @@ WSGI_APPLICATION = 'ar.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql',
-         'NAME': 'ardb',
+         'NAME': 'ARdb',
          'USER': 'postgres',
-         #'PASSWORD': '   ',
-         'PASSWORD': 'admin',
+         'PASSWORD': '   ',
+        # 'PASSWORD': 'admin',
          'HOST': 'localhost',
      }
  }

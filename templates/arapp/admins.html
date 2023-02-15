@@ -17,7 +17,8 @@
   padding: 15px;
   width: 50%;
   margin-top: 50px;
-  height: 590px;
+  height: 490px;
+  font-size: 20px;
   }
 
 .loginbutton {
@@ -31,7 +32,7 @@
   opacity: 0.9;
   font-size: 20px;
 }
-input[type=text], input[type=password], select {
+input[type=text], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 15px 0 20px 0;
@@ -40,7 +41,7 @@ input[type=text], input[type=password], select {
   background: #f1f1f1;
   align-text: center;
     bottom:10%;
-    font-size: 16px;
+    font-size: 20px;
 }
         </style>
     </head>
@@ -50,6 +51,7 @@ input[type=text], input[type=password], select {
             {% csrf_token %}
 
             <div class= "control-label"}>
+                <b>
                 <h1>Admin Login</h1>
                 <hr>
                 <br>
@@ -58,19 +60,17 @@ input[type=text], input[type=password], select {
                 <br>
                 <label ><b>Password</b> </label> <br>
             <input type = "password"  placeholder = "Enter password" name="password" required>
-                    <br>
-                    <label ><b>Subject</b></label> <br>
-            <select  name = "subject" required>
-                <option value="">select</option>
-              <option value="English">English</option>
-              <option value="Mathematics">Mathematics</option>
-                 <option value="physics">Physics</option>
-                 <option value="biology">Biology</option>
-                 <option value="social studies">Social Studies</option>
-            </select> <br> <br> <br> <br> <br> <br> <br>
+                    <br> <br>
+        {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
                   <button type="submit" class ="loginbutton" id="login"><b>login</b></button>
 
-
+</b>
             </div>
             </form>
 

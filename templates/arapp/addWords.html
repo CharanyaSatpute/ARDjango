@@ -18,6 +18,7 @@
   width: 100%;
   margin-top: 100px;
   height: 410px;
+  font-size: 20px;
   }
 
 .loginbutton {
@@ -54,7 +55,14 @@ input[type=text] {
                 <br>
             <label ><b>Word</b></label> <br> <br>
                <input type = "text"  placeholder = "Enter new word" name="word" required>
-                <br> <br> <br> <br> <br> <br> <br>
+                <br> <br> <br> <br>
+                {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
                   <button type="submit" class="loginbutton"><b>Save</b></button>
             </div>
             </form>

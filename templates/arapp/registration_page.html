@@ -19,14 +19,15 @@ body {
   padding: 15px;
   width: 50%;
   margin-top: 10px;
-  height: 670px;
+  height: 790px;
   }
+
 
 /* Add padding to containers */
 
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], select {
   width: 100%;
   padding: 15px;
   margin: 15px 0 20px 0;
@@ -74,7 +75,35 @@ input[type="radio"] {
   padding-right: 20px;
   display: inline-block;
 }
+.hidden {
+  display: block;
+  }
+  input[type=text], input[type=password], select {
+  width: 100%;
+  padding: 15px;
+  margin: 15px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  align-text: center;
+    bottom:10%;
+    font-size: 16px;
+
+}
+
+
 </style>
+  <script>
+function adminCheck() {
+    if (document.getElementById('admin').checked) {
+        document.getElementById('subject').style.visibility = 'visible';
+    }
+    else {
+        document.getElementById('subject').style.visibility = 'hidden';
+    }
+
+}
+</script>
 </head>
 <body>
 
@@ -82,6 +111,7 @@ input[type="radio"] {
   {% csrf_token %}
   <div class="container">
     <h1>Register</h1>
+      <b>
     <hr>
     <p>Please fill in this form to register</p>
     <label for="Full Name"><b>Full Name </b></label>
@@ -100,16 +130,34 @@ input[type="radio"] {
     <br>
     <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
     <br>
-   <input type="radio" id="student"  value="student" name="category">
+   <input type="radio" id="student"  value="student" name="category" onclick="adminCheck()" >
   <label for="student">Student </label>
-  <input type="radio" id="admin"  value="admin" name="category">
+  <input type="radio" id="admin"  value="admin" name="category" onclick="adminCheck()" >
   <label for="admin">Admin</label>
-    <br><br>
+    <br>
+    <div style="visibility:hidden" id="background-box">
+    <label ><b>Subject</b></label> <br>
+            <select  id="subject" name="subject"  class="hidden" >
+                <option value="">select</option>
+              <option value="English">English</option>
+              <option value="Mathematics">Mathematics</option>
+                 <option value="Physics">Physics</option>
+                 <option value="Biology">Biology</option>
+                 <option value="Social Studies">Social Studies</option>
+              </select>
+      </div>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
     <button type="submit" class="registerbtn">Register</button>
-
-
     <p>Already have an account? <a href="{% url 'index' %}">Login</a>.</p>
+          </b>
   </div>
+
 </form>
 
 </body>
